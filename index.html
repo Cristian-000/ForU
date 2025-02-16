@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rutina Semanal Flexible - Personalizada</title>
+    <title>Rutina Semanal Flexible - Personalizada (Sin Favoritos, Nueva Tabla)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Estilos CSS -  ¡Muchos estilos nuevos para la interfaz mejorada! */
+        /* Estilos CSS -  Se mantienen los estilos mejorados de la versión anterior */
         body { font-family: 'Arial', sans-serif; margin: 20px; color: #333; line-height: 1.6; background-color: #f8f8f8; }
         h1, h2, h3 { color: #0056b3; }
         h1 { text-align: center; margin-bottom: 20px; }
         h2 { margin-top: 30px; border-bottom: 2px solid #0056b3; padding-bottom: 5px; }
         h3 { margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; margin-bottom: 20px; } /* Añadido margin-bottom para separar tablas */
         th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         th { background-color: #0056b3; color: white; font-weight: bold; text-transform: uppercase; }
         tbody tr:nth-child(even) { background-color: #f9f9f9; }
@@ -31,11 +31,7 @@
         .opcion-botones button { padding: 5px 10px; font-size: 0.9em; margin-top: 0; }
         .opcion-botones button.seleccionar-btn { background-color: #28a745; }
         .opcion-botones button.seleccionar-btn:hover { background-color: #218838; }
-        .opcion-botones button.favorito-btn { background-color: #ffc107; color: black; }
-        .opcion-botones button.favorito-btn.active { background-color: #ff9800; }
-        .opcion-botones button.favorito-btn:hover { background-color: #ffb300; }
         .seleccionado { background-color: #e0f7fa; border-color: #b2ebf2; }
-        .favorito { background-color: #fff8e1; border-color: #ffecb3; }
 
         /* Estilos para Secciones Colapsables */
         .seccion-colapsable { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden; background-color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -75,12 +71,6 @@
             .seccion-contenido { padding: 8px; }
         }
 
-        /* Estilos para el Tooltip */
-        .tooltip-container { position: relative; display: inline-block; cursor: help; }
-        .tooltip-text { visibility: hidden; width: 200px; background-color: #333; color: #fff; text-align: left; border-radius: 6px; padding: 10px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -100px; opacity: 0; transition: opacity 0.3s; }
-        .tooltip-text::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent; }
-        .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
-
 
     </style>
 </head>
@@ -94,6 +84,14 @@
         <button class="cargar-btn" id="cargarRutinaBtn"><i class="fas fa-upload"></i> Cargar Rutina Guardada</button>
         <button class="reset-btn" id="resetRutinaBtn"><i class="fas fa-trash"></i> Resetear Rutina</button>
     </div>
+
+    <section id="rutinas-generadas">
+        <h2>Rutinas Generadas Anteriormente</h2>
+        <div id="contenedor-rutinas-alimentacion">
+            </div>
+        <div id="contenedor-rutinas-ejercicio">
+            </div>
+    </section>
 
 
     <section id="alimentacion" class="seccion-colapsable">
@@ -336,8 +334,12 @@
                 }
             };
 
-            const tablaAlimentacion = document.getElementById('tablaAlimentacion').getElementsByTagName('tbody')[0];
-            const tablaEjercicio = document.getElementById('tablaEjercicio').getElementsByTagName('tbody')[0];
+            const tablaAlimentacionOriginal = document.getElementById('tablaAlimentacion');
+            const tablaEjercicioOriginal = document.getElementById('tablaEjercicio');
+            const contenedorRutinasAlimentacion = document.getElementById('contenedor-rutinas-alimentacion');
+            const contenedorRutinasEjercicio = document.getElementById('contenedor-rutinas-ejercicio');
+
+
             const botonGenerar = document.getElementById('generarRutina');
             const botonGuardar = document.getElementById('guardarRutinaBtn');
             const botonCargar = document.getElementById('cargarRutinaBtn');
@@ -384,14 +386,50 @@
             }
 
 
-            function mostrarRutinaSemanal(rutinaSemanal) {
+           function mostrarRutinaSemanal(rutinaSemanal) {
+                const nuevaTablaAlimentacion = crearTablaAlimentacionHTML(rutinaSemanal);
+                const nuevaTablaEjercicio = crearTablaEjercicioHTML(rutinaSemanal);
+
+                // Insertar las nuevas tablas al inicio de los contenedores
+                contenedorRutinasAlimentacion.insertBefore(nuevaTablaAlimentacion, contenedorRutinasAlimentacion.firstChild);
+                contenedorRutinasEjercicio.insertBefore(nuevaTablaEjercicio, contenedorRutinasEjercicio.firstChild);
+
+
+                guardarRutinaLocalStorage(rutinaSemanal); // Guarda en localStorage después de mostrarla
+                rutinaSemanalGenerada = rutinaSemanal; // Actualiza la variable global con la rutina mostrada
+            }
+
+
+            // Nuevas funciones para crear las tablas HTML completas (Alimentación y Ejercicio)
+
+            function crearTablaAlimentacionHTML(rutinaSemanal) {
+                const tabla = document.createElement('table');
+                tabla.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Desayuno</th>
+                            <th>Media Mañana</th>
+                            <th>Almuerzo</th>
+                            <th>Merienda</th>
+                            <th>Cena</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-dia="Lunes"><th><b>Lunes</b></th><td data-comida="Desayuno"></td><td data-comida="Media Mañana"></td><td data-comida="Almuerzo"></td><td data-comida="Merienda"></td><td data-comida="Cena"></td></tr>
+                        <tr data-dia="Martes"><th><b>Martes</b></th><td data-comida="Desayuno"></td><td data-comida="Media Mañana"></td><td data-comida="Almuerzo"></td><td data-comida="Merienda"></td><td data-comida="Cena"></td></tr>
+                        <tr data-dia="Miércoles"><th><b>Miércoles</b></th><td data-comida="Desayuno"></td><td data-comida="Media Mañana"></td><td data-comida="Almuerzo"></td><td data-comida="Merienda"></td><td data-comida="Cena"></td></tr>
+                        <tr data-dia="Jueves"><th><b>Jueves</b></th><td data-comida="Desayuno"></td><td data-comida="Media Mañana"></td><td data-comida="Almuerzo"></td><td data-comida="Merienda"></td><td data-comida="Cena"></td></tr>
+                        <tr data-dia="Viernes"><th><b>Viernes</b></th><td data-comida="Desayuno"></td><td data-comida="Media Mañana"></td><td data-comida="Almuerzo"></td><td data-comida="Merienda"></td><td data-comida="Cena"></td></tr>
+                        <tr data-dia="Sábado y Domingo"><th rowspan="2"><b>Fin de Semana</b></th><th colspan="5">Flexibilidad Saludable: Puedes elegir opciones similares a los días de semana, o permitirte alguna comida menos estricta disfrutando de tus platos favoritos con moderación. Intenta mantener al menos la mayoría de tus comidas nutritivas y equilibradas. ¡Disfruta!</th></tr>
+                    </tbody>
+                `;
+                const tablaBody = tabla.querySelector('tbody');
                 diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
                 diasSemana.forEach(dia => {
-                    //Alimentación
-                    let filaAlimentacion = tablaAlimentacion.querySelector(`tr[data-dia="${dia}"]`);
+                    let filaAlimentacion = tablaBody.querySelector(`tr[data-dia="${dia}"]`);
                     for (let comida in rutinaSemanal.alimentacion[dia]) {
                         let celdaComida = filaAlimentacion.querySelector(`td[data-comida="${comida}"]`);
-                        // Limpiar contenido anterior y añadir nueva lista de opciones
                         celdaComida.innerHTML = '';
                         let listaOpciones = document.createElement('ul');
                         opcionesAlimentacion[dia][comida].forEach(opcionTexto => {
@@ -400,8 +438,45 @@
                         });
                         celdaComida.appendChild(listaOpciones);
                     }
-                    //Ejercicio
-                    let filaEjercicio = tablaEjercicio.querySelector(`tr[data-dia="${dia}"]`);
+                });
+                return tabla;
+            }
+
+
+            function crearTablaEjercicioHTML(rutinaSemanal) {
+                const tabla = document.createElement('table');
+                tabla.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Grupo Muscular</th>
+                            <th>Ejercicio Opción 1</th>
+                            <th>Ejercicio Opción 2</th>
+                            <th>Ejercicio Opción 3</th>
+                            <th>Ejercicio Opción 4</th>
+                            <th>Ejercicio Opción 5</th>
+                            <th>Series</th>
+                            <th>Repeticiones (aprox.)</th>
+                            <th>Descanso entre series</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-dia="Lunes"><th><b>Lunes</b></th><td>Pecho y Tríceps</td><td data-ejercicio="Pecho y Tríceps">Flexiones clásicas</td><td data-ejercicio="Pecho y Tríceps">Flexiones diamante</td><td data-ejercicio="Pecho y Tríceps">Flexiones inclinadas (pies elevados)</td><td data-ejercicio="Pecho y Tríceps">Flexiones declinadas (manos elevadas)</td><td data-ejercicio="Pecho y Tríceps">Press de banca con mancuernas en suelo</td><td>3</td><td>10-15</td><td>60-90 segundos</td></tr>
+                        <tr><td></td><td></td><td data-ejercicio="Tríceps">Fondos en silla o banco (tríceps)</td><td data-ejercicio="Tríceps">Press francés con mancuernas</td><td data-ejercicio="Tríceps">Extensión de tríceps con mancuerna por encima de la cabeza</td><td data-ejercicio="Tríceps">Patada de tríceps con mancuerna</td><td><data-ejercicio="Tríceps">Flexiones con manos juntas</td><td>3</td><td>12-15</td><td>60 segundos</td></tr>
+                        <tr data-dia="Martes"><th><b>Martes</b></th><td>Piernas y Hombro</td><td data-ejercicio="Piernas">Sentadillas con peso corporal</td><td data-ejercicio="Piernas">Zancadas (alternando piernas)</td><td data-ejercicio="Piernas">Sentadillas búlgaras</td><td data-ejercicio="Piernas">Sentadillas con salto</td><td data-ejercicio="Piernas">Elevación de talones (gemelos)</td><td>3</td><td>15-20</td><td>60 segundos</td></tr>
+                        <tr><td></td><td></td><td data-ejercicio="Hombro">Press militar con mancuernas</td><td data-ejercicio="Hombro">Elevaciones laterales con mancuernas</td><td data-ejercicio="Hombro">Elevaciones frontales con mancuernas</td><td data-ejercicio="Hombro">Elevaciones de hombros (trapecio) con mancuernas</td><td data-ejercicio="Hombro">Remo al mentón con mancuernas</td><td>3</td><td>12-15</td><td>60 segundos</td></tr>
+                        <tr data-dia="Miércoles"><th><b>Miércoles</b></th><td colspan="9"><b>Descanso Activo o Cardio Ligero:</b> Caminata rápida, yoga suave, estiramientos, movilidad articular, bicicleta suave, nadar. Escoge la opción que prefieras o necesites.</td></tr>
+                        <tr data-dia="Jueves"><th><b>Jueves</b></th><td>Espalda y Bíceps</td><td data-ejercicio="Espalda">Remo con mancuernas (diferentes agarres)</td><td data-ejercicio="Espalda">Dominadas (si tienes barra, o remo invertido bajo mesa)</td><td data-ejercicio="Espalda">Peso muerto rumano con mancuernas (espalda)</td><td data-ejercicio="Espalda">Superman (ejercicio lumbar)</td><td data-ejercicio="Espalda">Remo con mancuerna a una mano</td><td>3</td><td>10-12</td><td>60-90 segundos</td></tr>
+                        <tr><td></td><td></td><td data-ejercicio="Bíceps">Curl de bíceps con mancuernas</td><td data-ejercicio="Bíceps">Curl martillo con mancuernas</td><td data-ejercicio="Bíceps">Curl concentrado con mancuernas</td><td data-ejercicio="Bíceps">Curl de bíceps en banco inclinado</td><td data-ejercicio="Bíceps">Curl de muñeca (antebrazos)</td><td>3</td><td>12-15</td><td>60 segundos</td></tr>
+                        <tr data-dia="Viernes"><th><b>Viernes</b></th><td>Core y Abdominales</td><td data-ejercicio="Core">Plancha frontal</td><td data-ejercicio="Core">Plancha lateral</td><td data-ejercicio="Core">Crunches abdominales</td><td data-ejercicio="Core">Crunches bicicleta</td><td data-ejercicio="Core">Elevación de piernas en suelo</td><td>3</td><td>30-60 segundos (plancha) / 15-20 repeticiones (crunches)</td><td>45-60 segundos</td></tr>
+                        <tr><td></td><td></td><td data-ejercicio="Core">Giros rusos</td><td data-ejercicio="Core">Lumbares en suelo</td><td data-ejercicio="Core">Plancha con elevación de pierna alterna</td><td data-ejercicio="Core">Roll-out abdominal con rueda (o similar en pared)</td><td data-ejercicio="Core">Abdominales tipo 'tijera'</td><td>3</td><td>15-20</td><td>45-60 segundos</td></tr>
+                        <tr data-dia="Sábado y Domingo"><th><b>Sábado y Domingo</b></th><td colspan="9"><b>Descanso Activo o Descanso Total:</b>  Repite alguna actividad del miércoles, realiza alguna actividad al aire libre que disfrutes, o descansa completamente para recuperación. ¡Escucha tu cuerpo!</td></tr>
+                    </tbody>
+                `;
+                 const tablaBody = tabla.querySelector('tbody');
+                diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+                diasSemana.forEach(dia => {
+                    let filaEjercicio = tablaBody.querySelector(`tr[data-dia="${dia}"]`);
                     let ejerciciosDia = rutinaSemanal.ejercicio[dia];
                      if (ejerciciosDia) { // Verifica que haya ejercicios para este día
                         let contadorEjercicio = 1;
@@ -416,13 +491,11 @@
                         }
                     }
                 });
-                guardarRutinaLocalStorage(rutinaSemanal); // Guarda en localStorage después de mostrarla
-                rutinaSemanalGenerada = rutinaSemanal; // Actualiza la variable global con la rutina mostrada
+                return tabla;
             }
 
 
-            // Nuevas funciones para crear elementos de lista de opciones (Alimentación y Ejercicio) - CON BOTONES y funcionalidad
-
+            // Nuevas funciones para crear elementos de lista de opciones (Alimentación) - SIN BOTÓN de Favoritos
             function crearItemOpcionAlimentacion(opcionTexto, rutinaSemanal, dia, comida) {
                 let itemLista = document.createElement('li');
                 itemLista.classList.add('opcion-item');
@@ -441,25 +514,8 @@
                     seleccionarOpcionAlimentacion(itemLista, rutinaSemanal, dia, comida, opcionTexto);
                 });
 
-                 let tooltipBtn = document.createElement('div');
-                tooltipBtn.classList.add('tooltip-container');
-                let favoritoBtn = document.createElement('button');
-                favoritoBtn.classList.add('favorito-btn');
-                favoritoBtn.innerHTML = '<i class="fas fa-star"></i> Favorito';
-
-                let tooltipSpan = document.createElement('span');
-                tooltipSpan.classList.add('tooltip-text');
-                tooltipSpan.textContent = "Marcar como favorito para que aparezca con más frecuencia en rutinas generadas";
-                tooltipBtn.appendChild(favoritoBtn);
-                tooltipBtn.appendChild(tooltipSpan);
-
-
-                favoritoBtn.addEventListener('click', function() {
-                    toggleFavoritoOpcionAlimentacion(favoritoBtn, itemLista, opcionTexto);
-                });
 
                 botonesContenedor.appendChild(seleccionarBtn);
-                botonesContenedor.appendChild(tooltipBtn);
 
 
                 itemLista.appendChild(textoContenedor);
@@ -483,17 +539,6 @@
                 rutinaSemanal.alimentacion[dia][comida] = opcionTexto;
                 guardarRutinaLocalStorage(rutinaSemanal);
             }
-
-
-            function toggleFavoritoOpcionAlimentacion(botonFavorito, itemElement, opcionTexto) {
-                botonFavorito.classList.toggle('active');
-                itemElement.classList.toggle('favorito'); // Opcional: dar feedback visual de "favorito"
-
-                // Aquí iría la lógica para realmente marcar como favorito (ej. guardar en localStorage una lista de favoritos, y usarla al generar rutinas -  esto está fuera del alcance por ahora para mantener la complejidad manejable)
-                // Por ahora, solo cambia visualmente la clase 'favorito'
-                console.log(`Opción "${opcionTexto}" marcada/desmarcada como favorita.`); //Placeholder para futura funcionalidad
-            }
-
 
 
             // Funciones de Guardado, Carga y Reseteo (Mismas funciones que la versión anterior - NO CAMBIAN, solo asociadas a botones nuevos)
@@ -540,7 +585,7 @@
             });
 
 
-            // Funcionalidad de Secciones Colapsables
+            // Funcionalidad de Secciones Colapsables (Sin cambios)
             seccionesColapsables.forEach(seccion => {
                 const header = seccion.querySelector('.seccion-header');
                 header.addEventListener('click', function() {
@@ -555,12 +600,12 @@
                 iconoColapsar.classList.toggle('collapsed');
             }
 
-            // Inicializar Opciones de Alimentación en la tabla (al cargar la página)
+            // Inicializar Opciones de Alimentación en la tabla original (se mantiene la tabla de opciones)
             diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
             diasSemana.forEach(dia => {
-                let filaAlimentacion = tablaAlimentacion.querySelector(`tr[data-dia="${dia}"]`);
+                let filaAlimentacion = tablaAlimentacionOriginal.querySelector(`tr[data-dia="${dia}"]`);
                 for (let comida in opcionesAlimentacion[dia]) {
-                    let celdaComida = filaAlimentacion.querySelector(`td[data-comida="${comida}"]`);
+                    let celdaComida = filaAlimentacionOriginal.querySelector(`td[data-comida="${comida}"]`);
                     celdaComida.innerHTML = ''; // Limpiar contenido inicial
                     let listaOpciones = document.createElement('ul');
                      opcionesAlimentacion[dia][comida].forEach(opcionTexto => {
