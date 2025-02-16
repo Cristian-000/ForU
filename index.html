@@ -13,10 +13,6 @@
         th { background-color: #f4f4f4; font-weight: bold; }
         ul { list-style-type: disc; margin-left: 20px; }
         li { margin-bottom: 5px; }
-        .semana-ejemplo { border: 2px solid #0056b3; padding: 15px; margin-top: 20px; border-radius: 5px; background-color: #f9f9f9; }
-        .semana-ejemplo h3 { color: #0056b3; margin-top: 0; }
-        .opciones-lista { margin-bottom: 10px; }
-        .opciones-lista ul { margin-top: 5px; }
         .nota { font-style: italic; color: #777; margin-top: 10px; }
         button { background-color: #0056b3; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-top: 15px; }
         button:hover { background-color: #004488; }
@@ -28,7 +24,6 @@
             h2 { font-size: 20px; }
             table { font-size: 14px; }
             th, td { padding: 6px; }
-            .semana-ejemplo { padding: 10px; }
         }
         @media (max-width: 576px) {
             table { display: block; overflow-x: auto; } /* Para tablas muy anchas en pantallas pequeñas */
@@ -38,7 +33,7 @@
 </head>
 <body>
 
-
+    <h1>Rutina Semanal Flexible - Alimentación y Ejercicio</h1>
 
     <button id="generarRutina">Generar Nueva Semana Balanceada</button>
 
@@ -71,6 +66,7 @@
                             <li>Fruta fresca (manzana, pera, naranja) y un puñado de almendras o nueces.</li>
                             <li>Yogurt griego natural con un poco de miel y canela.</li>
                             <li>Un huevo duro.</li>
+                            <li>Queso cuartirolo magro y tomate.</li>
                         </ul>
                     </td>
                     <td data-comida="Almuerzo">
@@ -79,6 +75,7 @@
                             <li>Lentejas estofadas con verduras y una porción moderada de arroz integral.</li>
                             <li>Salmón al horno con espárragos y batata asada.</li>
                             <li>Pasta integral con verduras y pollo a la plancha.</li>
+                            <li>Guiso de lentejas con carne magra y verduras.</li>
                         </ul>
                     </td>
                     <td data-comida="Merienda">
@@ -87,6 +84,7 @@
                             <li>Queso fresco batido con fruta o canela.</li>
                             <li>Un huevo duro.</li>
                             <li>Zanahoria baby con hummus.</li>
+                            <li>Fruta fresca con un trozo de queso magro.</li>
                         </ul>
                     </td>
                     <td data-comida="Cena">
@@ -95,6 +93,7 @@
                             <li>Merluza o salmón a la plancha o al horno con verduras al vapor o ensalada.</li>
                             <li>Revuelto de champiñones con espinacas y un poco de queso bajo en grasa.</li>
                             <li>Sopa de verduras con pollo desmenuzado.</li>
+                            <li>Carne magra al horno con ensalada mixta.</li>
                         </ul>
                     </td>
                 </tr>
@@ -106,6 +105,7 @@
                             <li>Batido de proteínas con leche o bebida vegetal, fruta y espinacas.</li>
                             <li>Tortitas de avena con fruta y un poco de miel (opcional).</li>
                             <li>Cereales integrales sin azúcar añadido con leche y fruta.</li>
+                            <li>Yogurt con granola y semillas de lino.</li>
                         </ul>
                     </td>
                     <td data-comida="Media Mañana">
@@ -113,6 +113,7 @@
                             <li>Zanahoria baby con hummus.</li>
                             <li>Un huevo duro.</li>
                             <li>Yogurt natural con semillas de chía.</li>
+                            <li>Manzana con mantequilla de maní natural.</li>
                         </ul>
                     </td>
                     <td data-comida="Almuerzo">
@@ -121,6 +122,7 @@
                             <li>Ternera magra a la plancha con ensalada mixta y batata asada.</li>
                             <li>Crema de verduras (calabaza, zanahoria, puerro) con un poco de pan integral.</li>
                             <li>Ensalada de lentejas con verduras y huevo duro.</li>
+                            <li>Guiso de carne magra con papas y boniato.</li>
                         </ul>
                     </td>
                     <td data-comida="Merienda">
@@ -128,6 +130,7 @@
                             <li>Una pieza de fruta (manzana, plátano, pera).</li>
                             <li>Un puñado de semillas de calabaza o girasol.</li>
                             <li>Queso fresco con nueces.</li>
+                            <li>Bastones de zanahoria y apio.</li>
                         </ul>
                     </td>
                     <td data-comida="Cena">
@@ -136,6 +139,7 @@
                             <li>Lentejas rojas con verduras y especias.</li>
                             <li>Pavo en brochetas con verduras a la parrilla.</li>
                              <li>Revuelto de espárragos trigueros y gambas.</li>
+                             <li>Pollo al curry con arroz integral y ensalada.</li>
                         </ul>
                     </td>
                 </tr>
@@ -147,6 +151,7 @@
                             <li>Bocadillo pequeño integral con jamón serrano o pavo y tomate.</li>
                             <li>Revuelto de tofu con verduras.</li>
                              <li>Tortilla francesa con espinacas.</li>
+                             <li>Sándwich integral de pollo con lechuga y tomate.</li>
                         </ul>
                     </td>
                     <td data-comida="Media Mañana">
@@ -154,6 +159,7 @@
                             <li>Yogurt natural con semillas de chía.</li>
                             <li>Un puñado de nueces de Brasil.</li>
                             <li>Un huevo duro.</li>
+                            <li>Pera con ricota magra.</li>
                         </ul>
                     </td>
                     <td data-comida="Almuerzo">
@@ -162,6 +168,7 @@
                             <li>Ensalada de garbanzos con tomate, pepino, cebolla y pimiento.</li>
                             <li>Sopa de verduras con fideos integrales y pollo desmenuzado.</li>
                             <li>Quinoa con salmón a la plancha y aguacate.</li>
+                            <li>Guiso de mondongo con verduras (porción controlada).</li>
                         </ul>
                     </td>
                     <td data-comida="Merienda">
@@ -169,6 +176,7 @@
                             <li>Queso fresco con nueces.</li>
                             <li>Palitos de apio con mantequilla de cacahuete natural (sin azúcar añadido).</li>
                             <li>Un puñado de almendras y una naranja.</li>
+                            <li>Yogurt con semillas de girasol.</li>
                         </ul>
                     </td>
                     <td data-comida="Cena">
@@ -177,6 +185,7 @@
                             <li>Tortilla francesa con ensalada.</li>
                             <li>Pizza casera con base integral, verduras y proteína magra (pollo, atún).</li>
                             <li>Alcachofas salteadas con jamón.</li>
+                            <li>Milanesa de carne magra al horno con puré de zapallo.</li>
                         </ul>
                     </td>
                 </tr>
@@ -188,6 +197,7 @@
                             <li>Tostadas de pan integral con queso fresco y tomate.</li>
                             <li>Smoothie de frutas y verduras con proteína en polvo (opcional).</li>
                             <li>Bocadillo integral con atún al natural y aceitunas.</li>
+                            <li>Huevo revuelto con verduras y pan integral tostado.</li>
                         </ul>
                     </td>
                     <td data-comida="Media Mañana">
@@ -195,6 +205,7 @@
                             <li>Un plátano.</li>
                             <li>Un puñado de almendras y una mandarina.</li>
                              <li>Un huevo duro.</li>
+                             <li>Yogurt griego con fruta fresca.</li>
                         </ul>
                     </td>
                     <td data-comida="Almuerzo">
@@ -203,6 +214,7 @@
                             <li>Burrito integral con frijoles negros, arroz integral, verduras y pollo o carne magra.</li>
                             <li>Hamburguesa casera de pollo o ternera magra en pan integral con ensalada.</li>
                             <li>Pisto con huevo a la plancha y pan integral.</li>
+                            <li>Guiso de porotos con carne y chorizo colorado (porción controlada).</li>
                         </ul>
                     </td>
                     <td data-comida="Merienda">
@@ -210,6 +222,7 @@
                             <li>Zanahoria baby con guacamole casero.</li>
                             <li>Un vaso de leche o bebida vegetal con canela.</li>
                             <li>Un puñado de nueces y una manzana.</li>
+                            <li>Queso magro con tomate cherry.</li>
                         </ul>
                     </td>
                     <td data-comida="Cena">
@@ -218,6 +231,7 @@
                             <li>Sardinas al horno con ensalada.</li>
                             <li>Pollo al limón con verduras al vapor.</li>
                             <li>Calamares a la plancha con ensalada.</li>
+                            <li>Bife de chorizo magro a la plancha con ensalada verde.</li>
                         </ul>
                     </td>
                 </tr>
@@ -229,6 +243,7 @@
                             <li>Crepes de avena con fruta y yogur.</li>
                             <li>Tostadas integrales con paté vegetal (hummus, aguacate).</li>
                             <li>Tortilla de champiñones con pan integral.</li>
+                            <li>Leche con chocolate amargo y tostadas integrales.</li>
                         </ul>
                     </td>
                     <td data-comida="Media Mañana">
@@ -236,6 +251,7 @@
                             <li>Queso fresco batido con fruta.</li>
                             <li>Un puñado de avellanas.</li>
                             <li>Un huevo duro.</li>
+                            <li>Fruta fresca y semillas de zapallo.</li>
                         </ul>
                     </td>
                     <td data-comida="Almuerzo">
@@ -244,6 +260,7 @@
                             <li>Cuscús con verduras y pollo o garbanzos.</li>
                             <li>Pimientos rellenos de carne magra y arroz integral.</li>
                             <li>Arroz caldoso con verduras y pescado.</li>
+                            <li>Pastel de carne magra con ensalada.</li>
                         </ul>
                     </td>
                     <td data-comida="Merienda">
@@ -251,6 +268,7 @@
                             <li>Un puñado de nueces y uvas pasas.</li>
                             <li>Palitos de pepino con tzatziki.</li>
                             <li>Yogurt griego con frutos secos.</li>
+                            <li>Infusión con tostadas integrales y queso magro.</li>
                         </ul>
                     </td>
                     <td data-comida="Cena">
@@ -259,6 +277,7 @@
                             <li>Sopa de pescado y marisco.</li>
                             <li>Falafel al horno con ensalada y salsa de yogurt.</li>
                             <li>Salmón al papillote con verduras.</li>
+                             <li>Asado de tira magro (porción controlada) con ensalada criolla.</li>
                         </ul>
                     </td>
                 </tr>
@@ -398,14 +417,6 @@
         </table>
     </section>
 
-    <section id="semana-ejemplo" class="semana-ejemplo">
-        <h3>Semana de Ejemplo Predefinida (Alimentación y Ejercicio)</h3>
-        <p>Esta es una semana de ejemplo para darte una idea de cómo puedes combinar las opciones. ¡Siéntete libre de ajustarla a tus preferencias!</p>
-
-        <div id="semanaEjemploContenido">
-            </div>
-    </section>
-
     <p class="nota"><b>Nota Importante:</b> Esta es una guía flexible. Escucha a tu cuerpo, ajusta las opciones según tus preferencias y necesidades. La clave es la constancia y disfrutar del proceso. ¡Mucha suerte!</p>
 
     <script>
@@ -413,38 +424,38 @@
             const opcionesAlimentacion = {
                 "Lunes": {
                     "Desayuno": ["Tortilla de 2-3 huevos con verduras (espinacas, tomate, cebolla) y una rebanada de pan integral.", "Avena con leche o bebida vegetal, fruta fresca (plátano, fresas) y un puñado de nueces o semillas.", "Yogurt griego natural con granola casera y frutos rojos.", "Tostadas integrales con aguacate y tomate."],
-                    "Media Mañana": ["Fruta fresca (manzana, pera, naranja) y un puñado de almendras o nueces.", "Yogurt griego natural con un poco de miel y canela.", "Un huevo duro."],
-                    "Almuerzo": ["Ensalada grande de pollo o atún a la plancha con quinoa o arroz integral y verduras variadas.", "Lentejas estofadas con verduras y una porción moderada de arroz integral.", "Salmón al horno con espárragos y batata asada.", "Pasta integral con verduras y pollo a la plancha."],
-                    "Merienda": ["Un puñado de frutos secos (almendras, nueces, avellanas).", "Queso fresco batido con fruta o canela.", "Un huevo duro.", "Zanahoria baby con hummus."],
-                    "Cena": ["Pechuga de pollo o pavo a la plancha con ensalada verde y aguacate.", "Merluza o salmón a la plancha o al horno con verduras al vapor o ensalada.", "Revuelto de champiñones con espinacas y un poco de queso bajo en grasa.", "Sopa de verduras con pollo desmenuzado."]
+                    "Media Mañana": ["Fruta fresca (manzana, pera, naranja) y un puñado de almendras o nueces.", "Yogurt griego natural con un poco de miel y canela.", "Un huevo duro.", "Queso cuartirolo magro y tomate."],
+                    "Almuerzo": ["Ensalada grande de pollo o atún a la plancha con quinoa o arroz integral y verduras variadas.", "Lentejas estofadas con verduras y una porción moderada de arroz integral.", "Salmón al horno con espárragos y batata asada.", "Pasta integral con verduras y pollo a la plancha.", "Guiso de lentejas con carne magra y verduras."],
+                    "Merienda": ["Un puñado de frutos secos (almendras, nueces, avellanas).", "Queso fresco batido con fruta o canela.", "Un huevo duro.", "Zanahoria baby con hummus.", "Fruta fresca con un trozo de queso magro."],
+                    "Cena": ["Pechuga de pollo o pavo a la plancha con ensalada verde y aguacate.", "Merluza o salmón a la plancha o al horno con verduras al vapor o ensalada.", "Revuelto de champiñones con espinacas y un poco de queso bajo en grasa.", "Sopa de verduras con pollo desmenuzado.", "Carne magra al horno con ensalada mixta."]
                 },
                 "Martes": {
-                    "Desayuno": ["Tostadas integrales con aguacate y tomate o huevo pochado.", "Batido de proteínas con leche o bebida vegetal, fruta y espinacas.", "Tortitas de avena con fruta y un poco de miel (opcional).", "Cereales integrales sin azúcar añadido con leche y fruta."],
-                    "Media Mañana": ["Zanahoria baby con hummus.", "Un huevo duro.", "Yogurt natural con semillas de chía."],
-                    "Almuerzo": ["Pasta integral con atún al natural, tomate cherry y aceitunas.", "Ternera magra a la plancha con ensalada mixta y batata asada.", "Crema de verduras (calabaza, zanahoria, puerro) con un poco de pan integral.", "Ensalada de lentejas con verduras y huevo duro."],
-                    "Merienda": ["Una pieza de fruta (manzana, plátano, pera).", "Un puñado de semillas de calabaza o girasol.", "Queso fresco con nueces."],
-                    "Cena": ["Pescado blanco al horno con puré de coliflor.", "Lentejas rojas con verduras y especias.", "Pavo en brochetas con verduras a la parrilla.", "Revuelto de espárragos trigueros y gambas."]
+                    "Desayuno": ["Tostadas integrales con aguacate y tomate o huevo pochado.", "Batido de proteínas con leche o bebida vegetal, fruta y espinacas.", "Tortitas de avena con fruta y un poco de miel (opcional).", "Cereales integrales sin azúcar añadido con leche y fruta.", "Yogurt con granola y semillas de lino."],
+                    "Media Mañana": ["Zanahoria baby con hummus.", "Un huevo duro.", "Yogurt natural con semillas de chía.", "Manzana con mantequilla de maní natural."],
+                    "Almuerzo": ["Pasta integral con atún al natural, tomate cherry y aceitunas.", "Ternera magra a la plancha con ensalada mixta y batata asada.", "Crema de verduras (calabaza, zanahoria, puerro) con un poco de pan integral.", "Ensalada de lentejas con verduras y huevo duro.", "Guiso de carne magra con papas y boniato."],
+                    "Merienda": ["Una pieza de fruta (manzana, plátano, pera).", "Un puñado de semillas de calabaza o girasol.", "Queso fresco con nueces.", "Bastones de zanahoria y apio."],
+                    "Cena": ["Pescado blanco al horno con puré de coliflor.", "Lentejas rojas con verduras y especias.", "Pavo en brochetas con verduras a la parrilla.", "Revuelto de espárragos trigueros y gambas.", "Pollo al curry con arroz integral y ensalada."]
                 },
                 "Miércoles": {
-                    "Desayuno": ["Cereales integrales sin azúcar añadido con leche o bebida vegetal y fruta.", "Bocadillo pequeño integral con jamón serrano o pavo y tomate.", "Revuelto de tofu con verduras.", "Tortilla francesa con espinacas."],
-                    "Media Mañana": ["Yogurt natural con semillas de chía.", "Un puñado de nueces de Brasil.", "Un huevo duro."],
-                    "Almuerzo": ["Arroz integral con pollo al curry y verduras (brócoli, coliflor).", "Ensalada de garbanzos con tomate, pepino, cebolla y pimiento.", "Sopa de verduras con fideos integrales y pollo desmenuzado.", "Quinoa con salmón a la plancha y aguacate."],
-                    "Merienda": ["Queso fresco con nueces.", "Palitos de apio con mantequilla de cacahuete natural (sin azúcar añadido).", "Un puñado de almendras y una naranja."],
-                    "Cena": ["Ternera a la plancha con champiñones salteados y ensalada.", "Tortilla francesa con ensalada.", "Pizza casera con base integral, verduras y proteína magra (pollo, atún).", "Alcachofas salteadas con jamón."]
+                    "Desayuno": ["Cereales integrales sin azúcar añadido con leche o bebida vegetal y fruta.", "Bocadillo pequeño integral con jamón serrano o pavo y tomate.", "Revuelto de tofu con verduras.", "Tortilla francesa con espinacas.", "Sándwich integral de pollo con lechuga y tomate."],
+                    "Media Mañana": ["Yogurt natural con semillas de chía.", "Un puñado de nueces de Brasil.", "Un huevo duro.", "Pera con ricota magra."],
+                    "Almuerzo": ["Arroz integral con pollo al curry y verduras (brócoli, coliflor).", "Ensalada de garbanzos con tomate, pepino, cebolla y pimiento.", "Sopa de verduras con fideos integrales y pollo desmenuzado.", "Quinoa con salmón a la plancha y aguacate.", "Guiso de mondongo con verduras (porción controlada)."],
+                    "Merienda": ["Queso fresco con nueces.", "Palitos de apio con mantequilla de cacahuete natural (sin azúcar añadido).", "Un puñado de almendras y una naranja.", "Yogurt con semillas de girasol."],
+                    "Cena": ["Ternera a la plancha con champiñones salteados y ensalada.", "Tortilla francesa con ensalada.", "Pizza casera con base integral, verduras y proteína magra (pollo, atún).", "Alcachofas salteadas con jamón.", "Milanesa de carne magra al horno con puré de zapallo."]
                 },
                 "Jueves": {
-                    "Desayuno": ["Tortilla de patata (pequeña porción) con ensalada.", "Tostadas de pan integral con queso fresco y tomate.", "Smoothie de frutas y verduras con proteína en polvo (opcional).", "Bocadillo integral con atún al natural y aceitunas."],
-                    "Media Mañana": ["Un plátano.", "Un puñado de almendras y una mandarina.", "Un huevo duro."],
-                    "Almuerzo": ["Quinoa con verduras salteadas y tofu o pollo a la plancha.", "Burrito integral con frijoles negros, arroz integral, verduras y pollo o carne magra.", "Hamburguesa casera de pollo o ternera magra en pan integral con ensalada.", "Pisto con huevo a la plancha y pan integral."],
-                    "Merienda": ["Zanahoria baby con guacamole casero.", "Un vaso de leche o bebida vegetal con canela.", "Un puñado de nueces y una manzana."],
-                    "Cena": ["Merluza a la plancha con espinacas salteadas y patata cocida.", "Sardinas al horno con ensalada.", "Pollo al limón con verduras al vapor.", "Calamares a la plancha con ensalada."]
+                    "Desayuno": ["Tortilla de patata (pequeña porción) con ensalada.", "Tostadas de pan integral con queso fresco y tomate.", "Smoothie de frutas y verduras con proteína en polvo (opcional).", "Bocadillo integral con atún al natural y aceitunas.", "Huevo revuelto con verduras y pan integral tostado."],
+                    "Media Mañana": ["Un plátano.", "Un puñado de almendras y una mandarina.", "Un huevo duro.", "Yogurt griego con fruta fresca."],
+                    "Almuerzo": ["Quinoa con verduras salteadas y tofu o pollo a la plancha.", "Burrito integral con frijoles negros, arroz integral, verduras y pollo o carne magra.", "Hamburguesa casera de pollo o ternera magra en pan integral con ensalada.", "Pisto con huevo a la plancha y pan integral.", "Guiso de porotos con carne y chorizo colorado (porción controlada)."],
+                    "Merienda": ["Zanahoria baby con guacamole casero.", "Un vaso de leche o bebida vegetal con canela.", "Un puñado de nueces y una manzana.", "Queso magro con tomate cherry."],
+                    "Cena": ["Merluza a la plancha con espinacas salteadas y patata cocida.", "Sardinas al horno con ensalada.", "Pollo al limón con verduras al vapor.", "Calamares a la plancha con ensalada.", "Bife de chorizo magro a la plancha con ensalada verde."]
                 },
                 "Viernes": {
-                    "Desayuno": ["Huevos revueltos con salmón ahumado y pan integral tostado.", "Crepes de avena con fruta y yogur.", "Tostadas integrales con paté vegetal (hummus, aguacate).", "Tortilla de champiñones con pan integral."],
-                    "Media Mañana": ["Queso fresco batido con fruta.", "Un puñado de avellanas.", "Un huevo duro."],
-                    "Almuerzo": ["Paella de verduras y marisco (porción moderada).", "Cuscús con verduras y pollo o garbanzos.", "Pimientos rellenos de carne magra y arroz integral.", "Arroz caldoso con verduras y pescado."],
-                    "Merienda": ["Un puñado de nueces y uvas pasas.", "Palitos de pepino con tzatziki.", "Yogurt griego con frutos secos."],
-                    "Cena": ["Sepia a la plancha con ensalada mixta.", "Sopa de pescado y marisco.", "Falafel al horno con ensalada y salsa de yogurt.", "Salmón al papillote con verduras."]
+                    "Desayuno": ["Huevos revueltos con salmón ahumado y pan integral tostado.", "Crepes de avena con fruta y yogur.", "Tostadas integrales con paté vegetal (hummus, aguacate).", "Tortilla de champiñones con pan integral.", "Leche con chocolate amargo y tostadas integrales."],
+                    "Media Mañana": ["Queso fresco batido con fruta.", "Un puñado de avellanas.", "Un huevo duro.", "Fruta fresca y semillas de zapallo."],
+                    "Almuerzo": ["Paella de verduras y marisco (porción moderada).", "Cuscús con verduras y pollo o garbanzos.", "Pimientos rellenos de carne magra y arroz integral.", "Arroz caldoso con verduras y pescado.", "Pastel de carne magra con ensalada."],
+                    "Merienda": ["Un puñado de nueces y uvas pasas.", "Palitos de pepino con tzatziki.", "Yogurt griego con frutos secos.", "Infusión con tostadas integrales y queso magro."],
+                    "Cena": ["Sepia a la plancha con ensalada mixta.", "Sopa de pescado y marisco.", "Falafel al horno con ensalada y salsa de yogurt.", "Salmón al papillote con verduras.", "Asado de tira magro (porción controlada) con ensalada criolla."]
                 }
             };
 
@@ -466,7 +477,6 @@
 
             const tablaAlimentacion = document.getElementById('tablaAlimentacion').getElementsByTagName('tbody')[0];
             const tablaEjercicio = document.getElementById('tablaEjercicio').getElementsByTagName('tbody')[0];
-            const semanaEjemploContenido = document.getElementById('semanaEjemploContenido');
             const botonGenerar = document.getElementById('generarRutina');
 
             function generarSemanaAleatoria() {
@@ -529,29 +539,7 @@
                         }
                     }
                 });
-                 mostrarSemanaEjemploTexto(rutinaSemanal); // Actualiza la semana de ejemplo con la rutina generada
-                 guardarRutinaLocalStorage(rutinaSemanal); // Guarda en localStorage después de mostrarla
-            }
-
-
-            function mostrarSemanaEjemploTexto(rutinaSemanal) {
-                let textoEjemplo = "<h3>Semana de Ejemplo Generada Aleatoriamente</h3><p>Basada en las opciones, esta es una semana generada como ejemplo:</p>";
-                diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
-                diasSemana.forEach(dia => {
-                    textoEjemplo += `<h4>${dia}</h4><p><b>Alimentación:</b> Desayuno: ${rutinaSemanal.alimentacion[dia].Desayuno}. Media Mañana: ${rutinaSemanal.alimentacion[dia]["Media Mañana"]}. Almuerzo: ${rutinaSemanal.alimentacion[dia].Almuerzo}. Merienda: ${rutinaSemanal.alimentacion[dia].Merienda}. Cena: ${rutinaSemanal.alimentacion[dia].Cena}.</p><p><b>Ejercicio:</b> `;
-                    if(rutinaSemanal.ejercicio[dia]) {
-                        let ejerciciosDia = rutinaSemanal.ejercicio[dia];
-                        let bloquesEjercicio = [];
-                        for (let grupoMuscular in ejerciciosDia) {
-                            bloquesEjercicio.push(`${grupoMuscular}: ${ejerciciosDia[grupoMuscular].join(', ')}`);
-                        }
-                         textoEjemplo += bloquesEjercicio.join('; ') + `.</p>`;
-                    } else {
-                        textoEjemplo += `Descanso Activo o Total.</p>`;
-                    }
-
-                });
-                semanaEjemploContenido.innerHTML = textoEjemplo;
+                guardarRutinaLocalStorage(rutinaSemanal); // Guarda en localStorage después de mostrarla
             }
 
 
