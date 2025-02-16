@@ -3,72 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rutina Semanal Flexible - Personalizada (Sin Favoritos, Nueva Tabla)</title>
+    <title>Rutina Semanal Flexible - Personalizada (Tablas Compactas Móvil)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Estilos CSS -  Se mantienen los estilos mejorados de la versión anterior */
-        body { font-family: 'Arial', sans-serif; margin: 20px; color: #333; line-height: 1.6; background-color: #f8f8f8; }
+        /* Estilos CSS - Tablas MUY compactas para móvil */
+        body { font-family: 'Arial', sans-serif; margin: 10px; color: #333; line-height: 1.4; background-color: #f8f8f8; font-size: 15px; } /* Reducido el tamaño de fuente base y márgenes body */
         h1, h2, h3 { color: #0056b3; }
-        h1 { text-align: center; margin-bottom: 20px; }
-        h2 { margin-top: 30px; border-bottom: 2px solid #0056b3; padding-bottom: 5px; }
-        h3 { margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; margin-bottom: 20px; } /* Añadido margin-bottom para separar tablas */
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #0056b3; color: white; font-weight: bold; text-transform: uppercase; }
+        h1 { text-align: center; margin-bottom: 15px; font-size: 26px; } /* Reducido margin-bottom y font-size h1 */
+        h2 { margin-top: 20px; border-bottom: 1px solid #0056b3; padding-bottom: 3px; font-size: 20px; } /* Reducido margin-top, border-bottom, padding-bottom y font-size h2 */
+        h3 { margin-top: 15px; font-size: 17px; } /* Reducido margin-top y font-size h3 */
+        table { width: 100%; border-collapse: collapse; margin-top: 5px; background-color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; margin-bottom: 10px; font-size: 14px; } /* Reducido margin-top, margin-bottom y font-size table, box-shadow y border-radius */
+        th, td { border: 1px solid #ddd; padding: 6px; text-align: left; font-size: 13px; } /* Padding y font-size MUY reducidos en th y td */
+        th { background-color: #0056b3; color: white; font-weight: bold; text-transform: uppercase; padding: 8px 6px; font-size: 12px; } /* Ajustado padding y font-size en th */
         tbody tr:nth-child(even) { background-color: #f9f9f9; }
-        ul { list-style-type: none; padding-left: 0; }
-        li { margin-bottom: 8px; }
-        .nota { font-style: italic; color: #777; margin-top: 15px; display: block; text-align: center; }
-        button, .generar-btn, .guardar-btn, .cargar-btn, .reset-btn { background-color: #0056b3; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; margin-top: 15px; font-size: 16px; transition: background-color 0.3s ease; display: inline-block; }
+        ul { list-style-type: none; padding-left: 0; margin-top: 2px; margin-bottom: 2px; } /* Reducido margin ul */
+        li { margin-bottom: 4px; font-size: 14px; } /* Reducido margin-bottom y font-size li */
+        .nota { font-style: italic; color: #777; margin-top: 10px; display: block; text-align: center; font-size: 13px; } /* Reducido margin-top y font-size nota */
+        button, .generar-btn, .guardar-btn, .cargar-btn, .reset-btn { background-color: #0056b3; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; margin-top: 10px; font-size: 14px; transition: background-color 0.3s ease; display: inline-block; } /* Padding, border-radius, margin-top y font-size reducidos en botones */
         button:hover, .generar-btn:hover, .guardar-btn:hover, .cargar-btn:hover, .reset-btn:hover { background-color: #004488; }
-        button i, .generar-btn i, .guardar-btn i, .cargar-btn i, .reset-btn i { margin-right: 8px; }
-        .botones-container { text-align: center; margin-bottom: 20px; }
-        .opciones-lista { margin-bottom: 10px; }
-        .opciones-lista ul { margin-top: 5px; }
-        .opcion-item { padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px; background-color: #f0f8ff; display: flex; justify-content: space-between; align-items: center; }
+        button i, .generar-btn i, .guardar-btn i, .cargar-btn i, .reset-btn i { margin-right: 5px; } /* Reducido margin-right icono botón */
+        .botones-container { text-align: center; margin-bottom: 15px; } /* Reducido margin-bottom botones-container */
+        .opciones-lista { margin-bottom: 5px; } /* Reducido margin-bottom opciones-lista */
+        .opciones-lista ul { margin-top: 2px; margin-bottom: 2px; } /* Reducido margin ul en opciones-lista */
+        .opcion-item { padding: 6px 10px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 3px; background-color: #f0f8ff; display: flex; justify-content: space-between; align-items: center; font-size: 14px; } /* Padding, border-radius, margin-bottom y font-size opcion-item */
         .opcion-texto { flex-grow: 1; }
-        .opcion-botones { display: flex; gap: 5px; }
-        .opcion-botones button { padding: 5px 10px; font-size: 0.9em; margin-top: 0; }
+        .opcion-botones { display: flex; gap: 3px; } /* Reducido gap botones opcion-botones */
+        .opcion-botones button { padding: 4px 8px; font-size: 0.8em; margin-top: 0; border-radius: 4px; } /* Padding, font-size y border-radius botones internos opcion-botones */
         .opcion-botones button.seleccionar-btn { background-color: #28a745; }
         .opcion-botones button.seleccionar-btn:hover { background-color: #218838; }
         .seleccionado { background-color: #e0f7fa; border-color: #b2ebf2; }
 
-        /* Estilos para Secciones Colapsables */
-        .seccion-colapsable { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden; background-color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .seccion-header { background-color: #f4f4f4; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .seccion-header h3 { margin: 0; color: #333; }
-        .seccion-contenido { padding: 15px; border-top: 1px solid #ddd; display: block; /* Inicialmente visible */ }
-        .seccion-contenido.collapsed { display: none; } /* Oculto cuando colapsado */
-        .icono-colapsar { transition: transform 0.3s ease-in-out; }
+        /* Estilos para Secciones Colapsables - Reducidos también */
+        .seccion-colapsable { border: 1px solid #ddd; border-radius: 6px; margin-bottom: 10px; overflow: hidden; background-color: white; box-shadow: 0 1px 2px rgba(0,0,0,0.1); } /* Reducido border-radius y margin-bottom seccion-colapsable */
+        .seccion-header { background-color: #f4f4f4; padding: 10px 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; } /* Reducido padding seccion-header */
+        .seccion-header h3 { margin: 0; color: #333; font-size: 16px; } /* Reducido font-size h3 header */
+        .seccion-contenido { padding: 10px; border-top: 1px solid #ddd; display: block; } /* Reducido padding seccion-contenido */
+        .seccion-contenido.collapsed { display: none; }
+        .icono-colapsar { transition: transform 0.3s ease-in-out; font-size: 0.9em; } /* Reducido font-size icono */
         .icono-colapsar.collapsed { transform: rotate(-90deg); }
 
 
-        /* Estilos Responsivos (Mejorados) */
-        @media (max-width: 768px) {
-            body { margin: 10px; font-size: 16px; }
-            h1 { font-size: 24px; }
-            h2 { font-size: 18px; margin-top: 25px; }
-            h3 { font-size: 16px; margin-top: 15px; }
-            table { font-size: 15px; border-radius: 5px; }
-            th, td { padding: 5px; }
-            button, .generar-btn, .guardar-btn, .cargar-btn, .reset-btn { padding: 10px 15px; font-size: 15px; border-radius: 6px; }
-            .opcion-item { padding: 5px; font-size: 15px; }
-            .seccion-header { padding: 5px 7px; }
-            .seccion-header h3 { font-size: 17px; }
-            .seccion-contenido { padding: 5px; }
+        /* Estilos Responsivos - Aún más compactos en móvil pequeño */
+        @media (max-width: 768px) { /* Tablet - Ajustes menores si es necesario */
+            body { font-size: 14px; }
+            h1 { font-size: 24px; margin-bottom: 10px; }
+            h2 { font-size: 19px; margin-top: 18px; padding-bottom: 2px; }
+            h3 { font-size: 16px; margin-top: 13px; }
+            table { font-size: 13px; border-radius: 4px; margin-bottom: 8px; }
+            th, td { padding: 5px; font-size: 12px; }
+            th { padding: 7px 5px; font-size: 11px; }
+            button, .generar-btn, .guardar-btn, .cargar-btn, .reset-btn { padding: 7px 12px; font-size: 13px; border-radius: 5px; margin-top: 8px; }
+            .opcion-item { padding: 8px; font-size: 13px; border-radius: 3px; margin-bottom: 2px; }
+            .seccion-header { padding: 9px 11px; }
+            .seccion-header h3 { font-size: 15px; }
+            .seccion-contenido { padding: 9px; }
         }
-        @media (max-width: 576px) {
-            body { font-size: 15px; }
-            h1 { font-size: 26px; }
-            h2 { font-size: 20px; }
-            h3 { font-size: 16px; }
-            table { font-size: 14px; display: block; overflow-x: auto; /* Scroll horizontal para tablas anchas */ }
-            th, td { padding: 8px; }
-            button, .generar-btn, .guardar-btn, .cargar-btn, .reset-btn { padding: 8px 12px; font-size: 14px; }
-            .opcion-item { font-size: 14px; padding: 8px; }
-            .seccion-header { padding: 8px 10px; }
-            .seccion-header h3 { font-size: 16px; }
-            .seccion-contenido { padding: 8px; }
+        @media (max-width: 576px) { /* Móvil pequeño - Tablas aún más compactas y sin scroll horizontal */
+            body { font-size: 13px; margin: 8px; }
+            h1 { font-size: 22px; margin-bottom: 8px; }
+            h2 { font-size: 18px; margin-top: 16px; }
+            h3 { font-size: 15px; margin-top: 12px; }
+            table { font-size: 12px; border-radius: 3px; margin-bottom: 6px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; /* Scroll horizontal fluido en iOS */ } /* Añadido overflow-x: auto y -webkit-overflow-scrolling */
+            th, td { padding: 4px; font-size: 11px; }
+            th { padding: 6px 4px; font-size: 10px; }
+            button, .generar-btn, .guardar-btn, .cargar-btn, .reset-btn { padding: 6px 10px; font-size: 12px; border-radius: 4px; margin-top: 6px; }
+            .opcion-item { font-size: 13px; padding: 6px; border-radius: 2px; margin-bottom: 1px; }
+            .seccion-header { padding: 7px 9px; }
+            .seccion-header h3 { font-size: 14px; }
+            .seccion-contenido { padding: 7px; }
         }
 
 
@@ -390,9 +392,11 @@
                 const nuevaTablaAlimentacion = crearTablaAlimentacionHTML(rutinaSemanal);
                 const nuevaTablaEjercicio = crearTablaEjercicioHTML(rutinaSemanal);
 
-                // Insertar las nuevas tablas al inicio de los contenedores
+                // Insertar las nuevas tablas al INICIO de los contenedores (arriba)
                 contenedorRutinasAlimentacion.insertBefore(nuevaTablaAlimentacion, contenedorRutinasAlimentacion.firstChild);
                 contenedorRutinasEjercicio.insertBefore(nuevaTablaEjercicio, contenedorRutinasEjercicio.firstChild);
+
+                // **IMPORTANTE:** Las nuevas tablas generadas SIEMPRE se muestran ARRIBA de las anteriores en la sección "Rutinas Generadas Anteriormente"
 
 
                 guardarRutinaLocalStorage(rutinaSemanal); // Guarda en localStorage después de mostrarla
@@ -400,7 +404,7 @@
             }
 
 
-            // Nuevas funciones para crear las tablas HTML completas (Alimentación y Ejercicio)
+            // Nuevas funciones para crear las tablas HTML completas (Alimentación y Ejercicio) - SIN CAMBIOS en la ESTRUCTURA HTML de las tablas generadas
 
             function crearTablaAlimentacionHTML(rutinaSemanal) {
                 const tabla = document.createElement('table');
@@ -495,7 +499,8 @@
             }
 
 
-            // Nuevas funciones para crear elementos de lista de opciones (Alimentación) - SIN BOTÓN de Favoritos
+            // Nuevas funciones para crear elementos de lista de opciones (Alimentación) - SIN CAMBIOS
+
             function crearItemOpcionAlimentacion(opcionTexto, rutinaSemanal, dia, comida) {
                 let itemLista = document.createElement('li');
                 itemLista.classList.add('opcion-item');
@@ -556,7 +561,7 @@
             }
 
 
-            // Funcionalidad de Botones Principales
+            // Funcionalidad de Botones Principales (SIN CAMBIOS)
             botonGenerar.addEventListener('click', function() {
                 const nuevaRutina = generarSemanaAleatoria();
                 mostrarRutinaSemanal(nuevaRutina);
@@ -600,7 +605,7 @@
                 iconoColapsar.classList.toggle('collapsed');
             }
 
-            // Inicializar Opciones de Alimentación en la tabla original (se mantiene la tabla de opciones)
+            // Inicializar Opciones de Alimentación en la tabla original (se mantiene la tabla de opciones) - SIN CAMBIOS
             diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
             diasSemana.forEach(dia => {
                 let filaAlimentacion = tablaAlimentacionOriginal.querySelector(`tr[data-dia="${dia}"]`);
