@@ -18,15 +18,33 @@
         .opciones-lista { margin-bottom: 10px; }
         .opciones-lista ul { margin-top: 5px; }
         .nota { font-style: italic; color: #777; margin-top: 10px; }
+        button { background-color: #0056b3; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        button:hover { background-color: #004488; }
+
+        /* Estilos Responsivos */
+        @media (max-width: 768px) {
+            body { margin: 10px; }
+            h1 { font-size: 24px; }
+            h2 { font-size: 20px; }
+            table { font-size: 14px; }
+            th, td { padding: 6px; }
+            .semana-ejemplo { padding: 10px; }
+        }
+        @media (max-width: 576px) {
+            table { display: block; overflow-x: auto; } /* Para tablas muy anchas en pantallas pequeñas */
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>Rutina Semanal Flexible - Alimentación y Ejercicio</h1>
+
+
+    <button id="generarRutina">Generar Nueva Semana Balanceada</button>
 
     <section id="alimentacion">
         <h2>Alimentación - Opciones Diarias</h2>
-        <table>
+        <table id="tablaAlimentacion">
             <thead>
                 <tr>
                     <th>Día</th>
@@ -38,189 +56,214 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><b>Lunes</b></td>
-                    <td>
+                <tr data-dia="Lunes">
+                    <th><b>Lunes</b></th>
+                    <td data-comida="Desayuno">
                         <ul class="opciones-lista">
                             <li>Tortilla de 2-3 huevos con verduras (espinacas, tomate, cebolla) y una rebanada de pan integral.</li>
                             <li>Avena con leche o bebida vegetal, fruta fresca (plátano, fresas) y un puñado de nueces o semillas.</li>
                             <li>Yogurt griego natural con granola casera y frutos rojos.</li>
+                            <li>Tostadas integrales con aguacate y tomate.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Media Mañana">
                         <ul class="opciones-lista">
                             <li>Fruta fresca (manzana, pera, naranja) y un puñado de almendras o nueces.</li>
                             <li>Yogurt griego natural con un poco de miel y canela.</li>
+                            <li>Un huevo duro.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Almuerzo">
                         <ul class="opciones-lista">
                             <li>Ensalada grande de pollo o atún a la plancha con quinoa o arroz integral y verduras variadas.</li>
                             <li>Lentejas estofadas con verduras y una porción moderada de arroz integral.</li>
                             <li>Salmón al horno con espárragos y batata asada.</li>
+                            <li>Pasta integral con verduras y pollo a la plancha.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Merienda">
                         <ul class="opciones-lista">
                             <li>Un puñado de frutos secos (almendras, nueces, avellanas).</li>
                             <li>Queso fresco batido con fruta o canela.</li>
                             <li>Un huevo duro.</li>
+                            <li>Zanahoria baby con hummus.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Cena">
                         <ul class="opciones-lista">
                             <li>Pechuga de pollo o pavo a la plancha con ensalada verde y aguacate.</li>
                             <li>Merluza o salmón a la plancha o al horno con verduras al vapor o ensalada.</li>
                             <li>Revuelto de champiñones con espinacas y un poco de queso bajo en grasa.</li>
+                            <li>Sopa de verduras con pollo desmenuzado.</li>
                         </ul>
                     </td>
                 </tr>
-                <tr>
-                    <td><b>Martes</b></td>
-                    <td>
+                <tr data-dia="Martes">
+                    <th><b>Martes</b></th>
+                    <td data-comida="Desayuno">
                         <ul class="opciones-lista">
                             <li>Tostadas integrales con aguacate y tomate o huevo pochado.</li>
                             <li>Batido de proteínas con leche o bebida vegetal, fruta y espinacas.</li>
                             <li>Tortitas de avena con fruta y un poco de miel (opcional).</li>
+                            <li>Cereales integrales sin azúcar añadido con leche y fruta.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Media Mañana">
                         <ul class="opciones-lista">
                             <li>Zanahoria baby con hummus.</li>
                             <li>Un huevo duro.</li>
+                            <li>Yogurt natural con semillas de chía.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Almuerzo">
                         <ul class="opciones-lista">
                             <li>Pasta integral con atún al natural, tomate cherry y aceitunas.</li>
                             <li>Ternera magra a la plancha con ensalada mixta y batata asada.</li>
                             <li>Crema de verduras (calabaza, zanahoria, puerro) con un poco de pan integral.</li>
+                            <li>Ensalada de lentejas con verduras y huevo duro.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Merienda">
                         <ul class="opciones-lista">
                             <li>Una pieza de fruta (manzana, plátano, pera).</li>
                             <li>Un puñado de semillas de calabaza o girasol.</li>
+                            <li>Queso fresco con nueces.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Cena">
                         <ul class="opciones-lista">
                             <li>Pescado blanco al horno con puré de coliflor.</li>
                             <li>Lentejas rojas con verduras y especias.</li>
                             <li>Pavo en brochetas con verduras a la parrilla.</li>
+                             <li>Revuelto de espárragos trigueros y gambas.</li>
                         </ul>
                     </td>
                 </tr>
-                <tr>
-                    <td><b>Miércoles</b></td>
-                    <td>
+                <tr data-dia="Miércoles">
+                    <th><b>Miércoles</b></th>
+                    <td data-comida="Desayuno">
                         <ul class="opciones-lista">
                             <li>Cereales integrales sin azúcar añadido con leche o bebida vegetal y fruta.</li>
                             <li>Bocadillo pequeño integral con jamón serrano o pavo y tomate.</li>
                             <li>Revuelto de tofu con verduras.</li>
+                             <li>Tortilla francesa con espinacas.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Media Mañana">
                         <ul class="opciones-lista">
                             <li>Yogurt natural con semillas de chía.</li>
                             <li>Un puñado de nueces de Brasil.</li>
+                            <li>Un huevo duro.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Almuerzo">
                         <ul class="opciones-lista">
                             <li>Arroz integral con pollo al curry y verduras (brócoli, coliflor).</li>
                             <li>Ensalada de garbanzos con tomate, pepino, cebolla y pimiento.</li>
                             <li>Sopa de verduras con fideos integrales y pollo desmenuzado.</li>
+                            <li>Quinoa con salmón a la plancha y aguacate.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Merienda">
                         <ul class="opciones-lista">
                             <li>Queso fresco con nueces.</li>
                             <li>Palitos de apio con mantequilla de cacahuete natural (sin azúcar añadido).</li>
+                            <li>Un puñado de almendras y una naranja.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Cena">
                         <ul class="opciones-lista">
                             <li>Ternera a la plancha con champiñones salteados y ensalada.</li>
                             <li>Tortilla francesa con ensalada.</li>
                             <li>Pizza casera con base integral, verduras y proteína magra (pollo, atún).</li>
+                            <li>Alcachofas salteadas con jamón.</li>
                         </ul>
                     </td>
                 </tr>
-                 <tr>
-                    <td><b>Jueves</b></td>
-                    <td>
+                 <tr data-dia="Jueves">
+                    <th><b>Jueves</b></th>
+                    <td data-comida="Desayuno">
                         <ul class="opciones-lista">
                             <li>Tortilla de patata (pequeña porción) con ensalada.</li>
                             <li>Tostadas de pan integral con queso fresco y tomate.</li>
                             <li>Smoothie de frutas y verduras con proteína en polvo (opcional).</li>
+                            <li>Bocadillo integral con atún al natural y aceitunas.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Media Mañana">
                         <ul class="opciones-lista">
                             <li>Un plátano.</li>
                             <li>Un puñado de almendras y una mandarina.</li>
+                             <li>Un huevo duro.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Almuerzo">
                         <ul class="opciones-lista">
                             <li>Quinoa con verduras salteadas y tofu o pollo a la plancha.</li>
                             <li>Burrito integral con frijoles negros, arroz integral, verduras y pollo o carne magra.</li>
                             <li>Hamburguesa casera de pollo o ternera magra en pan integral con ensalada.</li>
+                            <li>Pisto con huevo a la plancha y pan integral.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Merienda">
                         <ul class="opciones-lista">
                             <li>Zanahoria baby con guacamole casero.</li>
                             <li>Un vaso de leche o bebida vegetal con canela.</li>
+                            <li>Un puñado de nueces y una manzana.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Cena">
                         <ul class="opciones-lista">
                             <li>Merluza a la plancha con espinacas salteadas y patata cocida.</li>
                             <li>Sardinas al horno con ensalada.</li>
                             <li>Pollo al limón con verduras al vapor.</li>
+                            <li>Calamares a la plancha con ensalada.</li>
                         </ul>
                     </td>
                 </tr>
-                <tr>
-                    <td><b>Viernes</b></td>
-                    <td>
+                <tr data-dia="Viernes">
+                    <th><b>Viernes</b></th>
+                    <td data-comida="Desayuno">
                         <ul class="opciones-lista">
                             <li>Huevos revueltos con salmón ahumado y pan integral tostado.</li>
                             <li>Crepes de avena con fruta y yogur.</li>
                             <li>Tostadas integrales con paté vegetal (hummus, aguacate).</li>
+                            <li>Tortilla de champiñones con pan integral.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Media Mañana">
                         <ul class="opciones-lista">
                             <li>Queso fresco batido con fruta.</li>
                             <li>Un puñado de avellanas.</li>
+                            <li>Un huevo duro.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Almuerzo">
                         <ul class="opciones-lista">
                             <li>Paella de verduras y marisco (porción moderada).</li>
                             <li>Cuscús con verduras y pollo o garbanzos.</li>
                             <li>Pimientos rellenos de carne magra y arroz integral.</li>
+                            <li>Arroz caldoso con verduras y pescado.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Merienda">
                         <ul class="opciones-lista">
                             <li>Un puñado de nueces y uvas pasas.</li>
                             <li>Palitos de pepino con tzatziki.</li>
+                            <li>Yogurt griego con frutos secos.</li>
                         </ul>
                     </td>
-                    <td>
+                    <td data-comida="Cena">
                         <ul class="opciones-lista">
                             <li>Sepia a la plancha con ensalada mixta.</li>
                             <li>Sopa de pescado y marisco.</li>
                             <li>Falafel al horno con ensalada y salsa de yogurt.</li>
+                            <li>Salmón al papillote con verduras.</li>
                         </ul>
                     </td>
                 </tr>
-                <tr>
-                    <td><b>Sábado y Domingo</b></td>
+                <tr data-dia="Sábado y Domingo">
+                    <th><b>Sábado y Domingo</b></th>
                     <td colspan="5">
                         <p><b>Fin de Semana - Flexibilidad Saludable:</b> Puedes elegir opciones similares a los días de semana, o permitirte alguna comida menos estricta disfrutando de tus platos favoritos con moderación. Intenta mantener al menos la mayoría de tus comidas nutritivas y equilibradas. ¡Disfruta!</p>
                     </td>
@@ -230,8 +273,8 @@
     </section>
 
     <section id="ejercicio">
-        <h2>Ejercicio en Casa - Calistenia y Mancuernas (Opciones Diarias)</h2>
-        <table>
+        <h2>Ejercicio en Casa - Calistenia y Mancuernas (Opciones Diarias Ampliadas)</h2>
+        <table id="tablaEjercicio">
             <thead>
                 <tr>
                     <th>Día</th>
@@ -239,18 +282,22 @@
                     <th>Ejercicio Opción 1</th>
                     <th>Ejercicio Opción 2</th>
                     <th>Ejercicio Opción 3</th>
+                    <th>Ejercicio Opción 4</th>
+                    <th>Ejercicio Opción 5</th>
                     <th>Series</th>
                     <th>Repeticiones (aprox.)</th>
                     <th>Descanso entre series</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><b>Lunes</b></td>
+                <tr data-dia="Lunes">
+                    <th><b>Lunes</b></th>
                     <td>Pecho y Tríceps</td>
-                    <td>Flexiones clásicas</td>
-                    <td>Flexiones diamante</td>
-                    <td>Press de banca con mancuernas en suelo</td>
+                    <td data-ejercicio="Pecho y Tríceps">Flexiones clásicas</td>
+                    <td data-ejercicio="Pecho y Tríceps">Flexiones diamante</td>
+                    <td data-ejercicio="Pecho y Tríceps">Flexiones inclinadas (pies elevados)</td>
+                    <td data-ejercicio="Pecho y Tríceps">Flexiones declinadas (manos elevadas)</td>
+                    <td data-ejercicio="Pecho y Tríceps">Press de banca con mancuernas en suelo</td>
                     <td>3</td>
                     <td>10-15</td>
                     <td>60-90 segundos</td>
@@ -258,29 +305,23 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Flexiones inclinadas (pies elevados)</td>
-                    <td>Flexiones declinadas (manos elevadas)</td>
-                    <td>Press francés con mancuernas</td>
-                    <td>3</td>
-                    <td>10-15</td>
-                    <td>60-90 segundos</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Fondos en silla o banco (tríceps)</td>
-                    <td>Extensión de tríceps con mancuerna por encima de la cabeza</td>
-                    <td>Patada de tríceps con mancuerna</td>
+                    <td data-ejercicio="Tríceps">Fondos en silla o banco (tríceps)</td>
+                    <td data-ejercicio="Tríceps">Press francés con mancuernas</td>
+                    <td data-ejercicio="Tríceps">Extensión de tríceps con mancuerna por encima de la cabeza</td>
+                    <td data-ejercicio="Tríceps">Patada de tríceps con mancuerna</td>
+                    <td><data-ejercicio="Tríceps">Flexiones con manos juntas</td>
                     <td>3</td>
                     <td>12-15</td>
                     <td>60 segundos</td>
                 </tr>
-                <tr>
-                    <td><b>Martes</b></td>
+                <tr data-dia="Martes">
+                    <th><b>Martes</b></th>
                     <td>Piernas y Hombro</td>
-                    <td>Sentadillas con peso corporal</td>
-                    <td>Zancadas (alternando piernas)</td>
-                    <td>Sentadillas búlgaras</td>
+                    <td data-ejercicio="Piernas">Sentadillas con peso corporal</td>
+                    <td data-ejercicio="Piernas">Zancadas (alternando piernas)</td>
+                    <td data-ejercicio="Piernas">Sentadillas búlgaras</td>
+                    <td data-ejercicio="Piernas">Sentadillas con salto</td>
+                    <td data-ejercicio="Piernas">Elevación de talones (gemelos)</td>
                     <td>3</td>
                     <td>15-20</td>
                     <td>60 segundos</td>
@@ -288,33 +329,27 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Sentadillas con salto</td>
-                    <td>Elevación de talones (gemelos)</td>
-                    <td>Peso muerto rumano con mancuernas (piernas)</td>
-                    <td>3</td>
-                    <td>15-20</td>
-                    <td>60 segundos</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Press militar con mancuernas</td>
-                    <td>Elevaciones laterales con mancuernas</td>
-                    <td>Elevaciones frontales con mancuernas</td>
+                    <td data-ejercicio="Hombro">Press militar con mancuernas</td>
+                    <td data-ejercicio="Hombro">Elevaciones laterales con mancuernas</td>
+                    <td data-ejercicio="Hombro">Elevaciones frontales con mancuernas</td>
+                    <td data-ejercicio="Hombro">Elevaciones de hombros (trapecio) con mancuernas</td>
+                    <td data-ejercicio="Hombro">Remo al mentón con mancuernas</td>
                     <td>3</td>
                     <td>12-15</td>
                     <td>60 segundos</td>
                 </tr>
-                <tr>
-                    <td><b>Miércoles</b></td>
-                    <td colspan="7"><b>Descanso Activo o Cardio Ligero:</b> Caminata rápida, yoga suave, estiramientos, movilidad articular, bicicleta suave. Escoge la opción que prefieras o necesites.</td>
+                <tr data-dia="Miércoles">
+                    <th><b>Miércoles</b></th>
+                    <td colspan="9"><b>Descanso Activo o Cardio Ligero:</b> Caminata rápida, yoga suave, estiramientos, movilidad articular, bicicleta suave, nadar. Escoge la opción que prefieras o necesites.</td>
                 </tr>
-                <tr>
-                    <td><b>Jueves</b></td>
+                <tr data-dia="Jueves">
+                    <th><b>Jueves</b></th>
                     <td>Espalda y Bíceps</td>
-                    <td>Remo con mancuernas (diferentes agarres)</td>
-                    <td>Dominadas (si tienes barra, o remo invertido bajo mesa)</td>
-                    <td>Peso muerto rumano con mancuernas (espalda)</td>
+                    <td data-ejercicio="Espalda">Remo con mancuernas (diferentes agarres)</td>
+                    <td data-ejercicio="Espalda">Dominadas (si tienes barra, o remo invertido bajo mesa)</td>
+                    <td data-ejercicio="Espalda">Peso muerto rumano con mancuernas (espalda)</td>
+                    <td data-ejercicio="Espalda">Superman (ejercicio lumbar)</td>
+                    <td data-ejercicio="Espalda">Remo con mancuerna a una mano</td>
                     <td>3</td>
                     <td>10-12</td>
                     <td>60-90 segundos</td>
@@ -322,29 +357,23 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Superman (ejercicio lumbar)</td>
-                    <td>Remo con mancuerna a una mano</td>
-                    <td>Pull-over con mancuerna</td>
-                    <td>3</td>
-                    <td>10-12</td>
-                    <td>60-90 segundos</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Curl de bíceps con mancuernas</td>
-                    <td>Curl martillo con mancuernas</td>
-                    <td>Curl concentrado con mancuernas</td>
+                    <td data-ejercicio="Bíceps">Curl de bíceps con mancuernas</td>
+                    <td data-ejercicio="Bíceps">Curl martillo con mancuernas</td>
+                    <td data-ejercicio="Bíceps">Curl concentrado con mancuernas</td>
+                    <td data-ejercicio="Bíceps">Curl de bíceps en banco inclinado</td>
+                    <td data-ejercicio="Bíceps">Curl de muñeca (antebrazos)</td>
                     <td>3</td>
                     <td>12-15</td>
                     <td>60 segundos</td>
                 </tr>
-                <tr>
-                    <td><b>Viernes</b></td>
+                <tr data-dia="Viernes">
+                    <th><b>Viernes</b></th>
                     <td>Core y Abdominales</td>
-                    <td>Plancha frontal</td>
-                    <td>Plancha lateral</td>
-                    <td>Crunches abdominales</td>
+                    <td data-ejercicio="Core">Plancha frontal</td>
+                    <td data-ejercicio="Core">Plancha lateral</td>
+                    <td data-ejercicio="Core">Crunches abdominales</td>
+                    <td data-ejercicio="Core">Crunches bicicleta</td>
+                    <td data-ejercicio="Core">Elevación de piernas en suelo</td>
                     <td>3</td>
                     <td>30-60 segundos (plancha) / 15-20 repeticiones (crunches)</td>
                     <td>45-60 segundos</td>
@@ -352,16 +381,18 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Elevación de piernas en suelo</td>
-                    <td>Giros rusos</td>
-                    <td>Lumbares en suelo</td>
+                    <td data-ejercicio="Core">Giros rusos</td>
+                    <td data-ejercicio="Core">Lumbares en suelo</td>
+                    <td data-ejercicio="Core">Plancha con elevación de pierna alterna</td>
+                    <td data-ejercicio="Core">Roll-out abdominal con rueda (o similar en pared)</td>
+                    <td data-ejercicio="Core">Abdominales tipo 'tijera'</td>
                     <td>3</td>
                     <td>15-20</td>
                     <td>45-60 segundos</td>
                 </tr>
-                <tr>
-                    <td><b>Sábado y Domingo</b></td>
-                    <td colspan="7"><b>Descanso Activo o Descanso Total:</b>  Repite alguna actividad del miércoles, realiza alguna actividad al aire libre que disfrutes, o descansa completamente para recuperación. ¡Escucha tu cuerpo!</td>
+                <tr data-dia="Sábado y Domingo">
+                    <th><b>Sábado y Domingo</b></th>
+                    <td colspan="9"><b>Descanso Activo o Descanso Total:</b>  Repite alguna actividad del miércoles, realiza alguna actividad al aire libre que disfrutes, o descansa completamente para recuperación. ¡Escucha tu cuerpo!</td>
                 </tr>
             </tbody>
         </table>
@@ -371,32 +402,185 @@
         <h3>Semana de Ejemplo Predefinida (Alimentación y Ejercicio)</h3>
         <p>Esta es una semana de ejemplo para darte una idea de cómo puedes combinar las opciones. ¡Siéntete libre de ajustarla a tus preferencias!</p>
 
-        <h4>Lunes</h4>
-        <p><b>Alimentación:</b> Desayuno: Tortilla de 3 huevos con espinacas y pan integral. Media Mañana: Yogurt griego con frutos rojos. Almuerzo: Ensalada de pollo con quinoa. Merienda: Almendras. Cena: Salmón al horno con espárragos.</p>
-        <p><b>Ejercicio:</b> Pecho y Tríceps - Elige Flexiones clásicas, Press de banca con mancuernas y Press francés con mancuernas.</p>
-
-        <h4>Martes</h4>
-        <p><b>Alimentación:</b> Desayuno: Avena con leche, plátano y chía. Media Mañana: Zanahoria baby con hummus. Almuerzo: Ternera magra con ensalada y batata. Merienda: Plátano. Cena: Pescado blanco al horno con puré de coliflor.</p>
-        <p><b>Ejercicio:</b> Piernas y Hombro - Elige Sentadillas con peso corporal, Zancadas y Press militar con mancuernas.</p>
-
-        <h4>Miércoles</h4>
-        <p><b>Alimentación:</b> Desayuno: Cereales integrales con leche y fruta. Media Mañana: Yogurt con semillas de chía. Almuerzo: Sopa de verduras con pollo. Merienda: Queso fresco con nueces. Cena: Ternera a la plancha con champiñones.</p>
-        <p><b>Ejercicio:</b> Descanso Activo - Caminata rápida de 40 minutos.</p>
-
-        <h4>Jueves</h4>
-        <p><b>Alimentación:</b> Desayuno: Tostadas integrales con queso fresco y tomate. Media Mañana: Plátano y almendras. Almuerzo: Burrito integral con pollo y verduras. Merienda: Zanahoria baby con guacamole. Cena: Merluza a la plancha con espinacas.</p>
-        <p><b>Ejercicio:</b> Espalda y Bíceps - Elige Remo con mancuernas, Dominadas (si es posible) y Curl de bíceps con mancuernas.</p>
-
-        <h4>Viernes</h4>
-        <p><b>Alimentación:</b> Desayuno: Huevos revueltos con salmón ahumado y pan integral. Media Mañana: Queso fresco batido con fruta. Almuerzo: Paella de verduras y marisco (porción moderada). Merienda: Palitos de pepino con tzatziki. Cena: Sepia a la plancha con ensalada.</p>
-        <p><b>Ejercicio:</b> Core y Abdominales - Elige Plancha frontal, Crunches abdominales y Elevación de piernas.</p>
-
-        <h4>Sábado y Domingo</h4>
-        <p><b>Alimentación:</b> Fin de semana flexible, disfrutando de comidas variadas pero manteniendo un equilibrio saludable.</p>
-        <p><b>Ejercicio:</b> Descanso Total - Recuperación activa ligera si lo deseas (caminata suave el sábado).</p>
+        <div id="semanaEjemploContenido">
+            </div>
     </section>
 
-    <p class="nota"><b>Nota Importante:</b> Esta es una guía flexible. Escucha a tu cuerpo, ajusta las opciones según tus preferencias y necesidades. La clave es la constancia y disfrutar del proceso. ¡Mucho éxito!</p>
+    <p class="nota"><b>Nota Importante:</b> Esta es una guía flexible. Escucha a tu cuerpo, ajusta las opciones según tus preferencias y necesidades. La clave es la constancia y disfrutar del proceso. ¡Mucha suerte!</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const opcionesAlimentacion = {
+                "Lunes": {
+                    "Desayuno": ["Tortilla de 2-3 huevos con verduras (espinacas, tomate, cebolla) y una rebanada de pan integral.", "Avena con leche o bebida vegetal, fruta fresca (plátano, fresas) y un puñado de nueces o semillas.", "Yogurt griego natural con granola casera y frutos rojos.", "Tostadas integrales con aguacate y tomate."],
+                    "Media Mañana": ["Fruta fresca (manzana, pera, naranja) y un puñado de almendras o nueces.", "Yogurt griego natural con un poco de miel y canela.", "Un huevo duro."],
+                    "Almuerzo": ["Ensalada grande de pollo o atún a la plancha con quinoa o arroz integral y verduras variadas.", "Lentejas estofadas con verduras y una porción moderada de arroz integral.", "Salmón al horno con espárragos y batata asada.", "Pasta integral con verduras y pollo a la plancha."],
+                    "Merienda": ["Un puñado de frutos secos (almendras, nueces, avellanas).", "Queso fresco batido con fruta o canela.", "Un huevo duro.", "Zanahoria baby con hummus."],
+                    "Cena": ["Pechuga de pollo o pavo a la plancha con ensalada verde y aguacate.", "Merluza o salmón a la plancha o al horno con verduras al vapor o ensalada.", "Revuelto de champiñones con espinacas y un poco de queso bajo en grasa.", "Sopa de verduras con pollo desmenuzado."]
+                },
+                "Martes": {
+                    "Desayuno": ["Tostadas integrales con aguacate y tomate o huevo pochado.", "Batido de proteínas con leche o bebida vegetal, fruta y espinacas.", "Tortitas de avena con fruta y un poco de miel (opcional).", "Cereales integrales sin azúcar añadido con leche y fruta."],
+                    "Media Mañana": ["Zanahoria baby con hummus.", "Un huevo duro.", "Yogurt natural con semillas de chía."],
+                    "Almuerzo": ["Pasta integral con atún al natural, tomate cherry y aceitunas.", "Ternera magra a la plancha con ensalada mixta y batata asada.", "Crema de verduras (calabaza, zanahoria, puerro) con un poco de pan integral.", "Ensalada de lentejas con verduras y huevo duro."],
+                    "Merienda": ["Una pieza de fruta (manzana, plátano, pera).", "Un puñado de semillas de calabaza o girasol.", "Queso fresco con nueces."],
+                    "Cena": ["Pescado blanco al horno con puré de coliflor.", "Lentejas rojas con verduras y especias.", "Pavo en brochetas con verduras a la parrilla.", "Revuelto de espárragos trigueros y gambas."]
+                },
+                "Miércoles": {
+                    "Desayuno": ["Cereales integrales sin azúcar añadido con leche o bebida vegetal y fruta.", "Bocadillo pequeño integral con jamón serrano o pavo y tomate.", "Revuelto de tofu con verduras.", "Tortilla francesa con espinacas."],
+                    "Media Mañana": ["Yogurt natural con semillas de chía.", "Un puñado de nueces de Brasil.", "Un huevo duro."],
+                    "Almuerzo": ["Arroz integral con pollo al curry y verduras (brócoli, coliflor).", "Ensalada de garbanzos con tomate, pepino, cebolla y pimiento.", "Sopa de verduras con fideos integrales y pollo desmenuzado.", "Quinoa con salmón a la plancha y aguacate."],
+                    "Merienda": ["Queso fresco con nueces.", "Palitos de apio con mantequilla de cacahuete natural (sin azúcar añadido).", "Un puñado de almendras y una naranja."],
+                    "Cena": ["Ternera a la plancha con champiñones salteados y ensalada.", "Tortilla francesa con ensalada.", "Pizza casera con base integral, verduras y proteína magra (pollo, atún).", "Alcachofas salteadas con jamón."]
+                },
+                "Jueves": {
+                    "Desayuno": ["Tortilla de patata (pequeña porción) con ensalada.", "Tostadas de pan integral con queso fresco y tomate.", "Smoothie de frutas y verduras con proteína en polvo (opcional).", "Bocadillo integral con atún al natural y aceitunas."],
+                    "Media Mañana": ["Un plátano.", "Un puñado de almendras y una mandarina.", "Un huevo duro."],
+                    "Almuerzo": ["Quinoa con verduras salteadas y tofu o pollo a la plancha.", "Burrito integral con frijoles negros, arroz integral, verduras y pollo o carne magra.", "Hamburguesa casera de pollo o ternera magra en pan integral con ensalada.", "Pisto con huevo a la plancha y pan integral."],
+                    "Merienda": ["Zanahoria baby con guacamole casero.", "Un vaso de leche o bebida vegetal con canela.", "Un puñado de nueces y una manzana."],
+                    "Cena": ["Merluza a la plancha con espinacas salteadas y patata cocida.", "Sardinas al horno con ensalada.", "Pollo al limón con verduras al vapor.", "Calamares a la plancha con ensalada."]
+                },
+                "Viernes": {
+                    "Desayuno": ["Huevos revueltos con salmón ahumado y pan integral tostado.", "Crepes de avena con fruta y yogur.", "Tostadas integrales con paté vegetal (hummus, aguacate).", "Tortilla de champiñones con pan integral."],
+                    "Media Mañana": ["Queso fresco batido con fruta.", "Un puñado de avellanas.", "Un huevo duro."],
+                    "Almuerzo": ["Paella de verduras y marisco (porción moderada).", "Cuscús con verduras y pollo o garbanzos.", "Pimientos rellenos de carne magra y arroz integral.", "Arroz caldoso con verduras y pescado."],
+                    "Merienda": ["Un puñado de nueces y uvas pasas.", "Palitos de pepino con tzatziki.", "Yogurt griego con frutos secos."],
+                    "Cena": ["Sepia a la plancha con ensalada mixta.", "Sopa de pescado y marisco.", "Falafel al horno con ensalada y salsa de yogurt.", "Salmón al papillote con verduras."]
+                }
+            };
+
+            const opcionesEjercicio = {
+                "Lunes": {
+                    "Pecho y Tríceps": ["Flexiones clásicas", "Flexiones diamante", "Flexiones inclinadas (pies elevados)", "Flexiones declinadas (manos elevadas)", "Press de banca con mancuernas en suelo", "Fondos en silla o banco (tríceps)", "Press francés con mancuernas", "Extensión de tríceps con mancuerna por encima de la cabeza", "Patada de tríceps con mancuerna", "Flexiones con manos juntas"]
+                },
+                "Martes": {
+                    "Piernas y Hombro": ["Sentadillas con peso corporal", "Zancadas (alternando piernas)", "Sentadillas búlgaras", "Sentadillas con salto", "Elevación de talones (gemelos)", "Press militar con mancuernas", "Elevaciones laterales con mancuernas", "Elevaciones frontales con mancuernas", "Elevaciones de hombros (trapecio) con mancuernas", "Remo al mentón con mancuernas"]
+                },
+                "Jueves": {
+                    "Espalda y Bíceps": ["Remo con mancuernas (diferentes agarres)", "Dominadas (si tienes barra, o remo invertido bajo mesa)", "Peso muerto rumano con mancuernas (espalda)", "Superman (ejercicio lumbar)", "Remo con mancuerna a una mano", "Curl de bíceps con mancuernas", "Curl martillo con mancuernas", "Curl concentrado con mancuernas", "Curl de bíceps en banco inclinado", "Curl de muñeca (antebrazos)"]
+                },
+                "Viernes": {
+                    "Core y Abdominales": ["Plancha frontal", "Plancha lateral", "Crunches abdominales", "Crunches bicicleta", "Elevación de piernas en suelo", "Giros rusos", "Lumbares en suelo", "Plancha con elevación de pierna alterna", "Roll-out abdominal con rueda (o similar en pared)", "Abdominales tipo 'tijera'"]
+                }
+            };
+
+
+            const tablaAlimentacion = document.getElementById('tablaAlimentacion').getElementsByTagName('tbody')[0];
+            const tablaEjercicio = document.getElementById('tablaEjercicio').getElementsByTagName('tbody')[0];
+            const semanaEjemploContenido = document.getElementById('semanaEjemploContenido');
+            const botonGenerar = document.getElementById('generarRutina');
+
+            function generarSemanaAleatoria() {
+                let nuevaRutinaAlimentacion = {};
+                let nuevaRutinaEjercicio = {};
+                let diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+
+                diasSemana.forEach(dia => {
+                    nuevaRutinaAlimentacion[dia] = {};
+                    nuevaRutinaEjercicio[dia] = {};
+                    for (let comida in opcionesAlimentacion[dia]) {
+                        nuevaRutinaAlimentacion[dia][comida] = escogerOpcionAleatoria(opcionesAlimentacion[dia][comida]);
+                    }
+                    for (let grupoMuscular in opcionesEjercicio[dia]) {
+                         nuevaRutinaEjercicio[dia][grupoMuscular] = escogerOpcionesAleatorias(opcionesEjercicio[dia][grupoMuscular], 3); // Elige 3 ejercicios por grupo
+                    }
+                });
+                return { alimentacion: nuevaRutinaAlimentacion, ejercicio: nuevaRutinaEjercicio };
+            }
+
+
+            function escogerOpcionAleatoria(lista) {
+                return lista[Math.floor(Math.random() * lista.length)];
+            }
+
+            function escogerOpcionesAleatorias(lista, cantidad) {
+                let opcionesEscogidas = [];
+                let listaCopia = [...lista]; //Crea una copia para no modificar la original
+                for (let i = 0; i < cantidad; i++) {
+                    if (listaCopia.length === 0) break; // Por si la lista tiene menos opciones que 'cantidad'
+                    let indiceAleatorio = Math.floor(Math.random() * listaCopia.length);
+                    opcionesEscogidas.push(listaCopia.splice(indiceAleatorio, 1)[0]); //Saca el elemento escogido de la copia
+                }
+                return opcionesEscogidas;
+            }
+
+
+            function mostrarRutinaSemanal(rutinaSemanal) {
+                diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+                diasSemana.forEach(dia => {
+                    //Alimentación
+                    let filaAlimentacion = tablaAlimentacion.querySelector(`tr[data-dia="${dia}"]`);
+                    for (let comida in rutinaSemanal.alimentacion[dia]) {
+                        let celdaComida = filaAlimentacion.querySelector(`td[data-comida="${comida}"]`);
+                        celdaComida.textContent = rutinaSemanal.alimentacion[dia][comida];
+                    }
+                    //Ejercicio
+                    let filaEjercicio = tablaEjercicio.querySelector(`tr[data-dia="${dia}"]`);
+                    let ejerciciosDia = rutinaSemanal.ejercicio[dia];
+                     if (ejerciciosDia) { // Verifica que haya ejercicios para este día
+                        let contadorEjercicio = 1;
+                        for (let grupoMuscular in ejerciciosDia) {
+                             ejerciciosDia[grupoMuscular].forEach(ejercicio => {
+                                let celdaEjercicio = filaEjercicio.querySelector(`td:nth-child(${3 + contadorEjercicio -1})[data-ejercicio="${grupoMuscular}"]`); // Ajusta el índice de columna
+                                if (celdaEjercicio) { // Verifica que la celda exista (por si acaso hay menos celdas de las esperadas)
+                                    celdaEjercicio.textContent = ejercicio;
+                                }
+                                contadorEjercicio++;
+                            });
+                        }
+                    }
+                });
+                 mostrarSemanaEjemploTexto(rutinaSemanal); // Actualiza la semana de ejemplo con la rutina generada
+                 guardarRutinaLocalStorage(rutinaSemanal); // Guarda en localStorage después de mostrarla
+            }
+
+
+            function mostrarSemanaEjemploTexto(rutinaSemanal) {
+                let textoEjemplo = "<h3>Semana de Ejemplo Generada Aleatoriamente</h3><p>Basada en las opciones, esta es una semana generada como ejemplo:</p>";
+                diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+                diasSemana.forEach(dia => {
+                    textoEjemplo += `<h4>${dia}</h4><p><b>Alimentación:</b> Desayuno: ${rutinaSemanal.alimentacion[dia].Desayuno}. Media Mañana: ${rutinaSemanal.alimentacion[dia]["Media Mañana"]}. Almuerzo: ${rutinaSemanal.alimentacion[dia].Almuerzo}. Merienda: ${rutinaSemanal.alimentacion[dia].Merienda}. Cena: ${rutinaSemanal.alimentacion[dia].Cena}.</p><p><b>Ejercicio:</b> `;
+                    if(rutinaSemanal.ejercicio[dia]) {
+                        let ejerciciosDia = rutinaSemanal.ejercicio[dia];
+                        let bloquesEjercicio = [];
+                        for (let grupoMuscular in ejerciciosDia) {
+                            bloquesEjercicio.push(`${grupoMuscular}: ${ejerciciosDia[grupoMuscular].join(', ')}`);
+                        }
+                         textoEjemplo += bloquesEjercicio.join('; ') + `.</p>`;
+                    } else {
+                        textoEjemplo += `Descanso Activo o Total.</p>`;
+                    }
+
+                });
+                semanaEjemploContenido.innerHTML = textoEjemplo;
+            }
+
+
+            function guardarRutinaLocalStorage(rutina) {
+                localStorage.setItem('rutinaSemanal', JSON.stringify(rutina));
+            }
+
+            function cargarRutinaLocalStorage() {
+                const rutinaGuardada = localStorage.getItem('rutinaSemanal');
+                return rutinaGuardada ? JSON.parse(rutinaGuardada) : null;
+            }
+
+            // Cargar rutina guardada al inicio
+            const rutinaCargada = cargarRutinaLocalStorage();
+            if (rutinaCargada) {
+                mostrarRutinaSemanal(rutinaCargada);
+            } else {
+                // Generar y mostrar una rutina inicial si no hay guardada
+                const rutinaInicial = generarSemanaAleatoria();
+                mostrarRutinaSemanal(rutinaInicial);
+            }
+
+
+            botonGenerar.addEventListener('click', function() {
+                const nuevaRutina = generarSemanaAleatoria();
+                mostrarRutinaSemanal(nuevaRutina);
+            });
+        });
+    </script>
 
 </body>
 </html>
